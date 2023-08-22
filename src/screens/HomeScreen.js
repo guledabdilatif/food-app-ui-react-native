@@ -47,15 +47,16 @@ const HomeScreen = () => {
           <View style={{
             flex: 1,
             height: 50,
-            borderRadius: wp(10),
+            borderRadius: wp(2),
             alignContent: 'center',
-            backgroundColor: COLORS.secondary,
+            backgroundColor: COLORS.light,
             flexDirection: "row",
             paddingHorizontal: wp(3),
-            
+            alignItems:'center',
+            flexDirection:'row'
           }}>
            
-            <MagnifyingGlassIcon size={wp(9)} color={COLORS.primary} style={{ marginLeft: wp(1), marginTop: wp(1) }} />
+            <MagnifyingGlassIcon size={wp(9)} color='rgba(0,0,0,0.8)' style={{ marginLeft: wp(1), marginTop: wp(1) }} />
             <TextInput style={{ flex: 1, fontSize: wp(5), marginLeft: wp(2) }} placeholder='Search for food' />
             
            
