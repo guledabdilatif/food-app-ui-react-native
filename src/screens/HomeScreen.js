@@ -8,25 +8,31 @@ import { useNavigation } from '@react-navigation/native'
 
 
 const HomeScreen = () => {
+  const [active, setActive] = useState(1);
   const navigation = useNavigation()
   const categoryImages = [
     {
+      id: 1,
       image: require('../../assets/catergories/pizza.png'),
       name: 'Pizza'
     },
     {
+      id: 2,
       image: require('../../assets/catergories/salad.png'),
       name: 'Salad'
     },
     {
+      id: 3,
       image: require('../../assets/catergories/sushi.png'),
       name: 'Sushi'
     },
     {
+      id: 4,
       image: require('../../assets/catergories/burger.png'),
       name: 'Burger'
     }
   ]
+
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
@@ -52,14 +58,14 @@ const HomeScreen = () => {
             backgroundColor: COLORS.light,
             flexDirection: "row",
             paddingHorizontal: wp(3),
-            alignItems:'center',
-            flexDirection:'row'
+            alignItems: 'center',
+            flexDirection: 'row'
           }}>
-           
+
             <MagnifyingGlassIcon size={wp(9)} color='rgba(0,0,0,0.8)' style={{ marginLeft: wp(1), marginTop: wp(1) }} />
             <TextInput style={{ flex: 1, fontSize: wp(5), marginLeft: wp(2) }} placeholder='Search for food' />
-            
-           
+
+
           </View>
           <View style={{ width: 50, height: 50, borderRadius: 10, marginLeft: 10, backgroundColor: COLORS.primary, justifyContent: 'center', alignItems: 'center' }}>
             <TouchableOpacity>
@@ -75,8 +81,8 @@ const HomeScreen = () => {
           style={{ flexDirection: 'row', display: 'flex', flex: 1, marginTop: wp(10) }}>
           {
             categoryImages.map((item, index) => {
-
-              return <TouchableOpacity key={index} style={{}}>
+              const isActive = item.id === active
+              return <TouchableOpacity key={index} style={{}} onPress={() => setActive(item.id)}>
                 < View
                   style={{
                     display: 'flex',
@@ -88,9 +94,10 @@ const HomeScreen = () => {
                     alignItems: 'center',
                     marginRight: wp(7),
                     marginTop: hp(1),
-                    backgroundColor: COLORS.secondary,
+                    backgroundColor: isActive ? COLORS.primary : COLORS.white,
                     marginBottom: hp(2)
                   }}>
+
                   <Image source={item.image} style={{ width: wp(8), height: wp(8) }} />
                   <Text style={{ fontWeight: 500, fontSize: hp(1.8) }}>{item.name}</Text>
                 </View>
@@ -99,7 +106,7 @@ const HomeScreen = () => {
           }
         </ScrollView>
 
-        <View  style={{ flexWrap: 'wrap', marginTop: 20 }}>
+        <View style={{ flexWrap: 'wrap', marginTop: 20 }}>
 
           <View style={{ flexWrap: 'wrap', width: wp(140), flexDirection: 'row', paddingHorizontal: hp(1) }}>
             {
